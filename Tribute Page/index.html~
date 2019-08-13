@@ -1,0 +1,34 @@
+<html id="main">
+<style>
+    img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+    margin: auto;
+}
+</style>
+<head>
+
+<title>Samuel L. Jackson Tribute</title>
+
+</head>
+
+
+<body>
+
+    <h1 id="title">Samuel L. Jackson</h1>
+    <h2>I don't remember asking you a Goddamned thing</h2>
+    <div id="img-div"> 
+        <img src="images/Samuel.jpg" id="image" > </img>
+        <div id="img-caption">Samuel Jackson as Jules Winnfield in Pulp Fiction</div>
+    </div>
+
+    <h3>Summary of Mr. Jackson's accomplishments:</h3>
+    <h4 id="tribute-info">
+        - Best Supporting Actor 2010 & 2013
+    </h4>
+    <a id="tribute-link" href="https://en.wikipedia.org/wiki/Samuel_L._Jackson" target="_blank">Wikipedia</a>
+
+</body>
+
+</html>
