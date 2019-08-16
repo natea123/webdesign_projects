@@ -4,24 +4,47 @@
 
 </head>
 <body>
-<h1 id="title">Survey Form</h1>
-<p id="description">This is a text placeholder</p>
-<form id="survey-form"> 
 
-<label for "name" id="name-label">*Name</label>
-<input id="name" name="name" title="please enter your name" type="text">
+    <h1 id="title">New Gaming Friends Survey Form</h1>
+    <p id="description">Please fill out your gaming preferences to be matched with similar gamers and make new friends!</p>
 
-<label for "email" id="email-label">*Email</label>
-<input id="email" email="email" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+    <form id="survey-form"> 
 
-<label for "number" id="number-label">*Age</label>
-<input id="number" age="age" type="number" title="please enter age" pattern="[0-9]" min="1" max="100">
+        <label for "name" id="name-label">*Name</label>
+        <input id="name" name="name" title="enter name" type="text" placeholder="enter name" required>
 
+        <label for "email" id="email-label">*Email</label>
+        <input id="email" email="email" type="email" placeholder="enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
 
+        <label for "number" id="number-label">*Age</label>
+        <input id="number" age="age" type="number" placeholder="enter age [1-100]" pattern="[0-9]" min="1" max="100">
 
-</form>
+        <label for "dropdown" id="dropdown-label">Platform</label>
+        <select id="dropdown">
+            <option value="PC">PC</option>
+            <option value="Xbox">Xbox</option>
+            <option value="PS4">PS4</option>
+            <option value="Switch">Switch</option>
+            <option value="Other">Other</option>
+        </select>
 
+        <label for "hours" id="hours-label">How many hours a week do you play:</label>
+        <div id="hours">
+        <input type="radio" name="hours" value="low">0-10<br>
+        <input type="radio" name="hours" value="medium">10-20<br>
+        <input type="radio" name="hours" value="high">20+<br> 
+        </div>
+        
+        <label for "style" id="style-label">What is your gaming style:</label>
+        <div id="style">
+        <input type="checkbox" value="serious" name="serious">Serious<br>
+        <input type="checkbox" value="fun" name="fun">Just here to make friends<br>
+        <input type="checkbox" value="whatever" name="whatever">Whatever<br>
+        </div>
 
+        <textarea placeholder="Please enter your username"></textarea>
 
-</body>
-</html>
+        <input id="submit" type="submit" value="Submit">
+
+<html>
+
