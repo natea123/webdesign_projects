@@ -1,14 +1,16 @@
 <html>
 <head>
 
+<title>Gaming Survey</title>
+<link rel="stylesheet" href="styles.css">
 
 </head>
 <body>
-
+  <div class="align-center">
     <h1 id="title">New Gaming Friends Survey Form</h1>
     <p id="description">Please fill out your gaming preferences to be matched with similar gamers and make new friends!</p>
-
-    <form id="survey-form"> 
+  </div>
+    <form id="survey-form" class="light-background">
 
         <label for "name" id="name-label">*Name</label>
         <input id="name" name="name" title="enter name" type="text" placeholder="enter name" required>
@@ -29,12 +31,12 @@
         </select>
 
         <label for "hours" id="hours-label">How many hours a week do you play:</label>
-        <div id="hours">
+        <fieldset id="hours">
         <input type="radio" name="hours" value="low">0-10<br>
         <input type="radio" name="hours" value="medium">10-20<br>
-        <input type="radio" name="hours" value="high">20+<br> 
-        </div>
-        
+        <input type="radio" name="hours" value="high">20+<br>
+        </fieldset>
+
         <label for "style" id="style-label">What is your gaming style:</label>
         <div id="style">
         <input type="checkbox" value="serious" name="serious">Serious<br>
@@ -47,4 +49,3 @@
         <input id="submit" type="submit" value="Submit">
 
 <html>
-

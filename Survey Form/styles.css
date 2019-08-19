@@ -1,0 +1,23 @@
+.light-background {
+background-color: #FDEFEC;
+display: grid;
+grid-template-columns: 50% 50%;
+grid-template-rows: 30px 30px 30px 30px 70px;
+grid-gap: 10px 20px;
+padding: 40px;
+height: 100%;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+label {
+  font-family: monospace;
+  font-size: 15px;
+  text-align: right;
+}
