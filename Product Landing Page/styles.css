@@ -1,0 +1,29 @@
+.box-container {
+    background-color: aqua;
+    display: flex;
+    height: 200px;
+    flex-direction: row;
+    justify-content: space-between;
+    border-color: darkseagreen;
+
+  }
+
+.nav-bar {
+    
+}
+
+#vid {
+  margin: 0 auto;
+  background-color: #777;
+}
+
+iframe {
+  display: block;
+}
+
+body {
+  text-align: center;
+}
+form {
+  display: inline-block;
+}
