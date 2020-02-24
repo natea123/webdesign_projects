@@ -1,79 +1,147 @@
 <html>
     <head>
         <title>Technical Documentation Page</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="styles.css">
     </head>
 
     <body>
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-3 order-2" id="sticky-sidebar">
+                    <div class="sticky-top">
+                        <nav id="sidebar" class="sidenav">
+                            <header><a class="nav-link" href="#Introduction">Introduction</a></header>
+                            <header><a class="nav-link" href="#Nodes">Nodes</a></header>
+                            <header><a class="nav-link" href="#Pods">Pods</a></header>
+                            <header><a class="nav-link" href="#Containers">Containers</a></header>
+                            <header><a class="nav-link" href="#Services">Services</a></header>
+                          </nav>
+                    </div>
+                </div>
+                <div class="col" id="main">
+                    <section class="main-section" id="Introduction">
+                        <header>Introduction</header>
+                        <p>
+                        Kubernetes is a portable, extensible, open-source platform for managing 
+                        containerized workloads and services, that facilitates both declarative 
+                        configuration and automation. It has a large, rapidly growing ecosystem. 
+                        Kubernetes services, support, and tools are widely available.
+                        </p>
+                        <p>
+                        The name Kubernetes originates from Greek, meaning helmsman or pilot. 
+                        Google open-sourced the Kubernetes project in 2014. Kubernetes builds upon 
+                        a decade and a half of experience that Google has with running production 
+                        workloads at scale, combined with best-of-breed ideas and practices from the 
+                        community.
+                        source: https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
+                        </p>
+                        <code></code>
+                    </section>
 
-        <nav id="nav-bar" >
-            <header><a class="nav-link" href="#Introduction">Introduction</a></header>
-            <header><a class="nav-link" href="#Nodes">Nodes</a></header>
-            <header><a class="nav-link" href="#Pods">Pods</a></header>
-            <header><a class="nav-link" href="#Containers">Containers</a></header>
-            <header><a class="nav-link" href="#Services">Services</a></header>
-          </nav>
+                    <section class="main-section" id="Nodes">
+                        <header>Nodes</header>
+                        <p>
+                            A node is a worker machine in Kubernetes, previously known as a minion. A node may be a 
+                            VM or physical machine, depending on the cluster. Each node contains the services 
+                            necessary to run pods and is managed by the master components. The services on a node 
+                            include the container runtime, kubelet and kube-proxy.
+                            source: https://kubernetes.io/docs/concepts/architecture/nodes/
+                        </p>
+                        <p>
+                            Node status and other details about a node can be displayed using the following command:
+                        </p>
+                        <code>kubectl describe node $node_name</code>
+                    </section>
 
-        <main id="main-doc">
+                    <section class="main-section" id="Pods">
+                        <header>Pods</header>
+                        <p>A Pod (as in a pod of whales or pea pod) is a group of one or more containers 
+                        (such as Docker containers), with shared storage/network, and a specification for 
+                        how to run the containers. A Pod’s contents are always co-located and co-scheduled, 
+                        and run in a shared context. A Pod models an application-specific “logical host” - it 
+                        contains one or more application containers which are relatively tightly coupled — in a 
+                        pre-container world, being executed on the same physical or virtual machine would mean being 
+                        executed on the same logical host.
+                        </p>
+                        <p>Containers within a Pod share an IP address and port space, and can find each other via localhost. 
+                        They can also communicate with each other using standard inter-process communications like SystemV 
+                        semaphores or POSIX shared memory. Containers in different Pods have distinct IP addresses and can 
+                        not communicate by IPC without special configuration. These containers usually communicate with each 
+                        other via Pod IP addresses.
+                        source: https://kubernetes.io/docs/concepts/workloads/pods/pod/<br /> 
 
-            <section class="main-section" id="Introduction">
-                <header>Introduction</header>
-                <p>Kubernetes is a portable, extensible, open-source platform for managing 
-                   containerized workloads and services, that facilitates both declarative 
-                   configuration and automation. It has a large, rapidly growing ecosystem. 
-                   Kubernetes services, support, and tools are widely available.</p>
-                <p>The name Kubernetes originates from Greek, meaning helmsman or pilot. 
-                   Google open-sourced the Kubernetes project in 2014. Kubernetes builds upon 
-                   a decade and a half of experience that Google has with running production 
-                   workloads at scale, combined with best-of-breed ideas and practices from the 
-                   community.
-                   source: https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
-                </p>
-                <code></code>
-            </section>
+                        For example, consider the following pod definition with an nginx image and custom image container:
+                        </p>
+                        <code>
+                            apiVersion: v1<br />                              
+                            kind: Pod<br />
+                            metadata:<br />
+                            name: rss-site<br />
+                            labels:<br />
+                            app: web<br />
+                            spec:<br />
+                            containers:<br />
+                            – name: front-end<br />
+                                image: nginx<br />
+                                ports:<br />
+                                – containerPort: 80<br />
+                            – name: rss-reader<br />
+                                image: nickchase/rss-php-nginx:v1<br />
+                                ports:<br />
+                                – containerPort: 88<br />
+                        </code>
+                    </section>
 
-            <section class="main-section" id="Nodes">
-                <header>Nodes</header>
-                <p></p>
-                <p></p>
-                <code></code>
-            </section>
+                    <section class="main-section" id="Containers">
+                        <header>Containers</header>
+                        <p>
+                        A container is a standard unit of software that packages up code and all its 
+                        dependencies so the application runs quickly and reliably from one computing environment 
+                        to another. A Docker container image is a lightweight, standalone, executable package of 
+                        software that includes everything needed to run an application: code, runtime, system tools, 
+                        system libraries and settings.</p>
+                        <p>
+                            Container images become containers at runtime and in the case of Docker containers - images 
+                            become containers when they run on Docker Engine. Available for both Linux and Windows-based 
+                            applications, containerized software will always run the same, regardless of the infrastructure. 
+                            Containers isolate software from its environment and ensure that it works uniformly despite 
+                            differences for instance between development and staging.
+                            source: https://www.docker.com/resources/what-container
+                        </p>
+                        <code></code>
+                    </section>
 
-            <section class="main-section" id="Pods">
-                <header>Pods</header>
-                <p></p>
-                <p></p>
-                <code></code>
-            </section>
-
-            <section class="main-section" id="Containers">
-                <header>Containers</header>
-                <p>
-                   A container is a standard unit of software that packages up code and all its 
-                   dependencies so the application runs quickly and reliably from one computing environment 
-                   to another. A Docker container image is a lightweight, standalone, executable package of 
-                   software that includes everything needed to run an application: code, runtime, system tools, 
-                   system libraries and settings.</p>
-                <p>
-                    Container images become containers at runtime and in the case of Docker containers - images 
-                    become containers when they run on Docker Engine. Available for both Linux and Windows-based 
-                    applications, containerized software will always run the same, regardless of the infrastructure. 
-                    Containers isolate software from its environment and ensure that it works uniformly despite 
-                    differences for instance between development and staging.
-                    source: https://www.docker.com/resources/what-container
-                </p>
-                <code></code>
-            </section>
-
-            <section class="main-section" id="Services">
-                <header>Services</header>
-                <p></p>
-                <p></p>
-                <code></code>
-            </section>
-
-        </main>
-
-    </body>
-    
+                    <section class="main-section" id="Services">
+                        <header>Services</header>
+                        <p>
+                            In Kubernetes, a Service is an abstraction which defines a logical set of Pods and a policy by which 
+                            to access them (sometimes this pattern is called a micro-service). The set of Pods targeted by a Service 
+                            is usually determined by a selector
+                            source: https://kubernetes.io/docs/concepts/services-networking/service
+                        </p>
+                        <p>
+                            For example, suppose you have a set of Pods that each listen on TCP port 9376 and carry a label app=MyApp:
+                        </p>
+                        <code>
+                            apiVersion: v1<br />
+                            kind: Service<br />
+                            metadata:<br />
+                            name: my-service<br />
+                            spec:<br />
+                            selector:<br />
+                                app: MyApp<br />
+                            ports:<br />
+                                - protocol: TCP<br />
+                                port: 80<br />
+                                targetPort: 9376<br />
+                        </code>
+                    </section>   
+                </div>
+            </div>
+        </div>       
+    </body>   
 </html>
